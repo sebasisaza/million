@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
@@ -6,18 +7,21 @@ using PropertyService.Domain.Entities;
 namespace PropertyService.Infrastructure.HostedServices;
 
 public class MongoDbInitializerHostedService(
-    IMongoCollection<Property> collection,
+    IServiceProvider serviceProvider,
     ILogger<MongoDbInitializerHostedService> logger) : IHostedService
 {
     public async Task StartAsync(CancellationToken cancellationToken)
     {
-        await EnsureIndexesAsync(cancellationToken);
-        await SeedSampleDataAsync(cancellationToken);
+        using var scope = serviceProvider.CreateScope();
+        var collection = scope.ServiceProvider.GetRequiredService<IMongoCollection<Property>>();
+
+        await EnsureIndexesAsync(collection, cancellationToken);
+        await SeedSampleDataAsync(collection, logger, cancellationToken);
     }
 
     public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 
-    private async Task EnsureIndexesAsync(CancellationToken cancellationToken)
+    private static async Task EnsureIndexesAsync(IMongoCollection<Property> collection, CancellationToken cancellationToken)
     {
         var nameIndex = new CreateIndexModel<Property>(
             Builders<Property>.IndexKeys.Ascending(p => p.Name),
@@ -30,7 +34,7 @@ public class MongoDbInitializerHostedService(
         await collection.Indexes.CreateManyAsync([nameIndex, addressIndex], cancellationToken);
     }
 
-    private async Task SeedSampleDataAsync(CancellationToken cancellationToken)
+    private static async Task SeedSampleDataAsync(IMongoCollection<Property> collection, ILogger logger, CancellationToken cancellationToken)
     {
         var count = await collection.CountDocumentsAsync(Builders<Property>.Filter.Empty, cancellationToken: cancellationToken);
 
