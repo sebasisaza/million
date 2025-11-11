@@ -1,0 +1,21 @@
+# Backend
+backend/PropertyService/bin/
+backend/PropertyService/obj/
+backend/PropertyService.Tests/bin/
+backend/PropertyService.Tests/obj/
+
+# Frontend
+frontend/property-web/node_modules/
+frontend/property-web/.next/
+frontend/property-web/out/
+frontend/property-web/.turbo/
+
+# General
+.DS_Store
+*.user
+*.suo
+*.swp
+.idea/
+.vscode/
+coverage/
+
