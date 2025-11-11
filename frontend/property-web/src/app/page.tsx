@@ -1,7 +1,7 @@
 import { PropertyFilters } from "@/components/properties/PropertyFilters";
 import { PropertyGrid } from "@/components/properties/PropertyGrid";
 import { getProperties } from "@/lib/api";
-import type { PropertyFilters as PropertyFiltersType } from "@/types/property";
+import type { Property, PropertyFilters as PropertyFiltersType } from "@/types/property";
 
 type HomePageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -29,7 +29,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const filters = parseFilters(resolvedSearchParams);
 
-  let properties = [];
+  let properties: Property[] = [];
   let errorMessage: string | null = null;
 
   try {
