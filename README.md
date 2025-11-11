@@ -116,5 +116,11 @@ Responses are expressed via DTOs containing: `id`, `idOwner`, `name`, `address`,
 
 ---
 
+## Property Catalog
+![Property Catalog](propertycatalog.png)
+
+## Property Detail
+![Property Catalog](propertydetail.png)
+
 This setup demonstrates a clean, testable architecture across .NET and React, optimized for Docker-based delivery.
 
