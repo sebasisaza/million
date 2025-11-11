@@ -102,7 +102,7 @@ export const PropertyFilters = ({ initialFilters }: PropertyFiltersProps) => {
             value={filters.name ?? ""}
             onChange={(event) => setFilters((prev) => ({ ...prev, name: event.target.value }))}
             placeholder="e.g. Riverside Loft"
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm transition focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200"
+            className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 transition focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200"
           />
         </label>
         <label className="grid gap-1">
@@ -112,7 +112,7 @@ export const PropertyFilters = ({ initialFilters }: PropertyFiltersProps) => {
             value={filters.address ?? ""}
             onChange={(event) => setFilters((prev) => ({ ...prev, address: event.target.value }))}
             placeholder="City, street..."
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm transition focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200"
+            className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 transition focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200"
           />
         </label>
       </div>
@@ -125,7 +125,7 @@ export const PropertyFilters = ({ initialFilters }: PropertyFiltersProps) => {
             min={0}
             value={filters.minPrice ?? ""}
             onChange={(event) => handleNumericChange("minPrice", event.target.value)}
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm transition focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200"
+            className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 transition focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200"
           />
         </label>
         <label className="grid gap-1">
@@ -135,7 +135,7 @@ export const PropertyFilters = ({ initialFilters }: PropertyFiltersProps) => {
             min={0}
             value={filters.maxPrice ?? ""}
             onChange={(event) => handleNumericChange("maxPrice", event.target.value)}
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm transition focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200"
+            className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 transition focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200"
           />
         </label>
       </div>
